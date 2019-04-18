@@ -1,25 +1,26 @@
-MAIN {	
-	INT chocolate = 7;
-	INT coke = 6;
-	INT bread = 3;
-	INT MON;	
+MAIN { 	
+	INT chocolate = 7; 
+	INT coke = 6; 
+	INT bread = 3; 
+	INT MON; 
+	INT CH; 	
 	
-	IN SEL chocolate;	
-	IN MON = 1;		
+	IN SEL chocolate; 	
+	IN MON = 1; 		
 	
-		IF (MON > chocolate) {
+		IF (MON > chocolate) { 
 			
-			MON - chocolate = CH;
-			OUT("here u go" + CH);		
+			MON - chocolate = CH; 
+			OUT( $here u go$ +CH ); 		
 			
-		}
+		} 
 
 		ELSE 
-		{
+		{ 
 
-			OUT("oops money not enough"); 	
-		}
+			OUT( $oops money not enough$ );  	
+		} 
 	
 
 
-}END
+} END 
