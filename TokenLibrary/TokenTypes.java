@@ -36,6 +36,7 @@ public enum TokenTypes {
     //***Data Types***
     INT,
     STRING,
+    STRLit,
     BOOLEAN,
     BOOLVALUE,
     COMMENT,
