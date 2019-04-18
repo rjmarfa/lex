@@ -136,7 +136,7 @@ public class Scanner {
                      }
                     
                     //LCUR
-                    else if (c== '['){
+                    else if (c== '{'){
                      
                          CURRENT_STATE = 24;
                          
@@ -146,7 +146,7 @@ public class Scanner {
                      
                     
                     //RCUR
-                    else if (c==']'){
+                    else if (c=='}'){
                         CURRENT_STATE = 25;
                     }
                  
