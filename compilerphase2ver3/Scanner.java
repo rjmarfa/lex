@@ -79,7 +79,7 @@ public class Scanner {
                     //End of the line
                     if (c == ';') {
                         //tokenS = Remove(tokenS);
-                        return new Token(TokenTypes.ENDLINE);
+                        CURRENT_STATE=51;
                     }
                     //START & MONEY
                     else if (c == 'M') {
@@ -111,6 +111,7 @@ public class Scanner {
                      
                          CURRENT_STATE = 16;
                          
+                         
                      }
                   
 
@@ -139,6 +140,7 @@ public class Scanner {
                     else if (c== '{'){
                      
                          CURRENT_STATE = 24;
+                        
                          
                      }
                     
@@ -148,6 +150,7 @@ public class Scanner {
                     //RCUR
                     else if (c=='}'){
                         CURRENT_STATE = 25;
+                        
                     }
                  
                     
@@ -183,6 +186,7 @@ public class Scanner {
                     // ADD
                     else if (c=='+'){
                         CURRENT_STATE = 30;
+                        
                     }
                     
                     //SUBTRACT
@@ -228,6 +232,11 @@ public class Scanner {
                     //WHITESPACE
                     else if (c==' '){
                         CURRENT_STATE = 47;
+                    }
+                    //String Literal
+                     else if (c=='$'){
+                        CURRENT_STATE = 52;
+                        //System.out.println(c);
                     }
                    
                     
@@ -426,7 +435,7 @@ public class Scanner {
 
                 case 13:
 
-                    if (c == ' '){
+                    if (c == ' ' || c=='('){
                     Goback();
                     return new Token(TokenTypes.OUTPUT);
                     }                 
@@ -464,11 +473,12 @@ public class Scanner {
                     if (c == 'H'){
                    
                     CURRENT_STATE=17;
+                   
                     }                 
                     else{ 
                         return new Token(TokenTypes.ERROR);
                     }
-                //break;
+                break;
                 
                 case 17:
 
@@ -545,7 +555,7 @@ public class Scanner {
                 //RPAR
                 case 23:
 
-                    if (c==' ' || c== '{'){
+                    if (c==' ' || c== '{' || c==';'){
                         Goback();
                         return new Token(TokenTypes.RPAR);
                         } 
@@ -557,8 +567,10 @@ public class Scanner {
                 case 24:
 
                     if (c==' '){
+                      
                         Goback();
                         return new Token(TokenTypes.LCUR);
+                        
                         }                 
                         else{ 
                             return new Token(TokenTypes.ERROR);
@@ -566,10 +578,10 @@ public class Scanner {
                 //RCUR
                 case 25:
 
-                      if (AlphaOrDigit(c)||c==' '){
+                      if (c==' '){
                         Goback();
                         return new Token(TokenTypes.RCUR);
-                        } 
+                        }
                         else{ 
                             return new Token(TokenTypes.ERROR);
                         }
@@ -636,7 +648,7 @@ public class Scanner {
                 //ADDSUB
                  case 30:
 
-                    if (c == ' ' || IsDigit(c)){
+                    if (c == ' ' || AlphaOrDigit(c)){
                         Goback();
                         return new Token(TokenTypes.ADDSUB);
                         }                 
@@ -806,7 +818,7 @@ public class Scanner {
                             return new Token(TokenTypes.ERROR);
                         }
                    // break;
-                    
+                    //END
                     case 45:
 
                     if (c == 'D'){
@@ -873,8 +885,36 @@ public class Scanner {
                         
                     }
                     //break;
+                    //ENDLINE
+                    case 51:
 
-                    
+                    if (c==' ') {
+                        Goback();
+                        return new Token(TokenTypes.ENDLINE);
+                        
+                    } else {
+                      
+                        return new Token(TokenTypes.ERROR);
+                        
+                    }
+                    //break;
+                    //STRING Literal
+                    case 52:
+
+                    if (AlphaOrDigit(c) || c==' ') {
+                        CURRENT_STATE=52;
+                        //System.out.print(c);
+                    } 
+                    else if (c=='$'){
+                    //Goback();
+                    return new Token(TokenTypes.STRLit);
+                    }
+                    else {
+                      
+                        return new Token(TokenTypes.ERROR);
+                        
+                    }
+                    break;
 
 
 

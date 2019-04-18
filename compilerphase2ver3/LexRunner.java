@@ -22,7 +22,7 @@ public class LexRunner {
         while (Scanner.IsInputEnd()) {
             Token currentToken = scan.ConsumeNextToken();
             if (currentToken.getTokenType() == TokenTypes.ERROR) {
-                System.out.println("SYNTAX ERROR LINE: " + Scanner.line);
+                System.out.println("SYNTAX ERROR");
                 break;
             } else {
                 switch (currentToken.getTokenType()) {
