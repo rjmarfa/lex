@@ -27,26 +27,12 @@ public class LexRunner {
             } else {
                 switch (currentToken.getTokenType()) {
                     case WHITESPACE:
-                    case SINGLECOMMENT:
-                    case MULTICOMMENT:
+                   // case SCOMMENT:
+                    //case MCOMMENT:
                         break;
-                    case NEWLINE:
-                        System.out.println("\n");
-                        break;
-                    case STRINGLITERAL:
-                        TokenString strT = (TokenString) currentToken;
-                        System.out.print("[" + currentToken.getTokenType() + " = " + strT.literal + "] " );
-                        break;
-                    case LETTERLITERAL:
-                        TokenChar lit = (TokenChar) currentToken;
-                        System.out.print("[" + currentToken.getTokenType() + " = " + lit.literal + "] " );
-                        break;
-                    case ID:
-                        TokenIdentifier tid = (TokenIdentifier) currentToken;
-                        System.out.print("[" + currentToken.getTokenType() + " = " + tid.idName + "] " );
-                        break;
+                 
                     default:
-                        System.out.print("[" + currentToken.getTokenType() + "] ");
+                        System.out.println("[" + currentToken.getTokenType() + "] ");
                 }
             }
         }
